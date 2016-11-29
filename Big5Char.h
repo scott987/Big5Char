@@ -10,12 +10,14 @@ public:
     Big5Char(char h,char l);
 
     const char* c_str()const{return ch;};
+    const unsigned encode()const;
+
     Big5Char& operator=(const Big5Char& rhs);
     bool operator==(const Big5Char& rhs)const;
     bool operator!=(const Big5Char& rhs)const;
     friend std::ostream& operator<<(std::ostream& os, const Big5Char& b5c);
 
-    bool isChinese(){
+    bool isChinese()const{
         return (ch[0]&0xFF) >= 0xA4;
     }
 private:

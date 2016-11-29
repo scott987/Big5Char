@@ -1,6 +1,7 @@
 #include"Big5Char.h"
 
 #include<cstdio>
+#include<sstream>
 
 Big5Char::Big5Char(char* big5ch){
     if((big5ch[0]&0xFF)>127) {
@@ -15,6 +16,10 @@ Big5Char::Big5Char(char* big5ch){
 Big5Char::Big5Char(char h,char l){
     this->ch[0]=h;
     this->ch[1]=l;
+}
+
+const unsigned Big5Char::encode()const{
+    return isChinese()?(ch[0]&0xFF)*256+(ch[1]&0xFF):ch[0]&0xFF;
 }
 
 Big5Char& Big5Char::operator=(const Big5Char& rhs){
@@ -52,3 +57,4 @@ bool cBig5reader(Big5Char* b5c,FILE* fp){
     }
     return false;
 }
+
