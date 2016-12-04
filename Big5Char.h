@@ -8,11 +8,13 @@ public:
     Big5Char(){};
     Big5Char(char* big5ch);
     Big5Char(char h,char l);
+    Big5Char(int c);
 
     const char* c_str()const{return ch;};
     const unsigned encode()const;
 
     Big5Char& operator=(const Big5Char& rhs);
+    Big5Char& operator=(char rhs);
     bool operator==(const Big5Char& rhs)const;
     bool operator!=(const Big5Char& rhs)const;
     friend std::ostream& operator<<(std::ostream& os, const Big5Char& b5c);

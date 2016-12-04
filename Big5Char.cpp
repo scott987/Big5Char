@@ -18,6 +18,11 @@ Big5Char::Big5Char(char h,char l){
     this->ch[1]=l;
 }
 
+Big5Char::Big5Char(int c){
+    if(c<127)this->ch[0]=c;
+    else this->ch[0]='\0';
+}
+
 const unsigned Big5Char::encode()const{
     return isChinese()?(ch[0]&0xFF)*256+(ch[1]&0xFF):ch[0]&0xFF;
 }
@@ -26,6 +31,11 @@ Big5Char& Big5Char::operator=(const Big5Char& rhs){
     const char* temp = rhs.c_str();
     this->ch[0]=temp[0];
     this->ch[1]=temp[1];
+}
+
+Big5Char& Big5Char::operator=(char rhs){
+    this->ch[0]=rhs;
+    this->ch[1]='\0';
 }
 
 bool Big5Char::operator==(const Big5Char& rhs)const{
